@@ -65,6 +65,13 @@ test: $(PYSRC) $(PYTHON) venv/bin/pip-sync requirements.txt $(PYTEST)
         && $(PYTEST) --ds {{ cookiecutter.project_name }}.settings.pytest test/*.py
 
 
+
+run: $(PYSRC) $(PYTHON) venv/bin/pip-sync requirements.txt $(PYTEST) manage.py
+	source venv/bin/activate \
+	    && venv/bin/pip-sync \
+	    && export DJANGO_SETTINGS_MODULE={{ cookiecutter.project_name }}.settings.local \
+	    && $(PYTHON) manage.py runserver
+
 ##############
 # Deployment #
 ##############
