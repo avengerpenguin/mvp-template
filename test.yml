@@ -1,0 +1,3 @@
+default_context:
+  project_name: "hello"
+  domain_name: "example.com"
