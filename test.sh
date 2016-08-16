@@ -10,4 +10,7 @@ cd test
 # These are usage steps for this template
 cookiecutter --no-input --config-file ../test.yml -o $PWD --overwrite-if-exists ..
 cd hello
-make test
+make clean deploy-test
+
+. venv/bin/activate
+python manage.py tail test

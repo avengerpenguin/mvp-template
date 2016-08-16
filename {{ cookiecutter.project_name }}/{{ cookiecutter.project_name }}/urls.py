@@ -1,4 +1,4 @@
-from . import views
+from {{ cookiecutter.project_name }} import views
 from django.conf.urls import url
 
 

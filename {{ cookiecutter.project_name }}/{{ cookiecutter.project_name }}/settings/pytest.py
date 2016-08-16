@@ -1,4 +1,4 @@
-from .common import *
+from {{ cookiecutter.project_name }}.settings.common import *
 
 
 DEBUG=True

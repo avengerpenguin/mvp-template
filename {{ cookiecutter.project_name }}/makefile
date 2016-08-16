@@ -72,10 +72,22 @@ run: $(PYSRC) $(PYTHON) venv/bin/pip-sync requirements.txt $(PYTEST) manage.py
 	    && export DJANGO_SETTINGS_MODULE={{ cookiecutter.project_name }}.settings.local \
 	    && $(PYTHON) manage.py runserver
 
+
 ##############
 # Deployment #
 ##############
 
-deploy-%: $(PIP) $(ZAPPA)
-	$(PIP) install -U .
-	$(ZAPPA) deploy "$*"
+$(ZAPPA):
+	$(PIP) install zappa
+
+deploy-test: $(PIP) test requirements.txt
+	source venv/bin/activate \
+	    && venv/bin/pip-sync \
+        && export DJANGO_SETTINGS_MODULE={{ cookiecutter.project_name }}.settings.test \
+        && $(PYTHON) manage.py deploy test
+
+deploy-live: $(PIP) test requirements.txt
+	source venv/bin/activate \
+	    && venv/bin/pip-sync \
+        && export DJANGO_SETTINGS_MODULE={{ cookiecutter.project_name }}.settings.live \
+        && $(PYTHON) manage.py deploy live
