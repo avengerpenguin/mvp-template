@@ -14,3 +14,4 @@ make clean deploy-test
 
 . venv/bin/activate
 python manage.py tail test
+
