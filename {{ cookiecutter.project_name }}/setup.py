@@ -9,5 +9,5 @@ setup(
     author_email='ross@thelaunch.ninja',
     packages=['{{ cookiecutter.project_name }}'],
     description='{{ cookiecutter.project_name }} MVP',
-    install_requires=['django', 'django-zappa'],
+    install_requires=['django', 'zappa'],
 )

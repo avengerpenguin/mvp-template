@@ -21,6 +21,4 @@ ZAPPA_SETTINGS = {
 }
 
 
-INSTALLED_APPS = [
-    'django_zappa',
-]
+INSTALLED_APPS = []

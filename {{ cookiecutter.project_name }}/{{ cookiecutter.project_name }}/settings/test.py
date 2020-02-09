@@ -19,9 +19,4 @@ ZAPPA_SETTINGS = {
 }
 
 
-INSTALLED_APPS = [
-    'django_zappa',
-]
-
-
 ALLOWED_HOSTS = ['*',]

@@ -10,8 +10,19 @@ cd test
 # These are usage steps for this template
 cookiecutter --no-input --config-file ../test.yml -o $PWD --overwrite-if-exists ..
 cd hello
-make clean deploy-test
 
+
+virtualenv -p python3 venv
 . venv/bin/activate
-python manage.py tail test
+pip install --upgrade pip setuptools pip-tools
+pip-compile requirements.in
+pip-compile dev-requirements.in
+pip-sync requirements.txt dev-requirements.txt
+invoke test
+
+
+#make clean deploy-test
+
+#. venv/bin/activate
+#python manage.py tail test
 
